@@ -1,11 +1,28 @@
 <script>
-	import FeedbackForm from './components/FeedbackForm.svelte'
-	import FeedbackList from './components/FeedbackList.svelte'
-	import FeedbackStats from './components/FeedbackStats.svelte'
+	let firstName='Shawna';
+	let lastName="Yuan";
+	let color = 'lightgreen'
+	let showText = false
+
+	$: name = firstName + ' ' + lastName
+
+	const toggle = ()=> {
+		color = color === 'lightgreen' ? 'red' : 'lightgreen'
+		showText = !showText
+	}
+	// 20:24
+	//  npm run dev
+	// prettier?
 </script>
 
 <main class="container">
-	<FeedbackForm />
-	<FeedbackStats />
-	<FeedbackList />
+	<h1 style="color: {color}">Hello {name}!</h1>
+
+	{#if showText}
+		<p>yohohoho</p>
+	{:else}
+		<p>no text</p>
+	{/if}
+
+	<button on:click={toggle}>Click</button>
 </main>
